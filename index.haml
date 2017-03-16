@@ -1,0 +1,56 @@
+!!!5
+%html
+	%head
+		%meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+		%meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+		%meta{charset: "utf-8"}
+
+		%link{href: './node_modules/bootstrap/dist/css/bootstrap.min.css', rel: 'stylesheet'}
+		%title Images
+		:css
+			img {
+				background-size: cover;
+				object-fit: cover;
+				width: 100%;
+				margin-bottom: 30px;
+			}
+	%body
+
+		- @data = [{:id => 1, :image => "./img/photo-1477173249897-5afc98d3f565.jpg"},
+			{:id => 2, :image => "./img/photo-1452882033718-1caccfcfe77f.jpg"},
+			{:id => 3, :image => "./img/photo-1444012236767-1b471c68781c.jpg"},
+			{:id => 4, :image => "./img/photo-1432107294469-414527cb5c65.jpg"},
+			{:id => 5, :image => "./img/photo-1445888985293-8e1b904061c4.jpg"},
+			{:id => 6, :image => "./img/photo-1446321423766-c339f030bd0a.jpg"},
+			{:id => 7, :image => "./img/photo-1470326030020-86a5ef9ca428.jpg"},
+			{:id => 8, :image => "./img/photo-1461914756888-80f9821f5d17.jpg"},
+			{:id => 9, :image => "./img/photo-1484157239365-80e635261db7.jpg"},
+			{:id => 10, :image => "./img/photo-1453831362806-3d5577f014a4.jpg"},
+			{:id => 11, :image => "./img/photo-1487532195053-ae7d32261c6a.jpg"},
+			{:id => 12, :image => "./img/photo-1474600056930-615c3d706456.jpg"},
+			{:id => 13, :image => "./img/photo-1477259004500-ce2463b979ca.jpg"},
+			{:id => 14, :image => "./img/photo-1444731961956-751ed90465a5.jpg"},
+			{:id => 15, :image => "./img/photo-1469053713174-e64e64779a7a.jpg"},
+			{:id => 16, :image => "./img/photo-1444228425018-ff8535a55c93.jpg"},
+			{:id => 17, :image => "./img/photo-1432139555190-58524dae6a55.jpg"},
+			{:id => 18, :image => "./img/photo-1428196457394-f0c4aec5f574.jpg"},
+			{:id => 19, :image => "./img/photo-1486475554424-2fa50cd59f18.jpg"},
+			{:id => 20, :image => "./img/photo-1483000805330-4eaf0a0d82da.jpg"},
+			{:id => 21, :image => "./img/photo-1478358161113-b0e11994a36b.jpg"},
+			{:id => 22, :image => "./img/photo-1482855549413-2a6c9b1955a7.jpg"},
+			{:id => 23, :image => "./img/photo-1487505983481-9aa2d9f9901a.jpg"},
+			{:id => 24, :image => "./img/photo-1485813727108-9b009dfab116.jpg"},
+			{:id => 25, :image => "./img/photo-1431068799455-80bae0caf685.jpg"},
+			{:id => 26, :image => "./img/photo-1486837007094-f97925b97013.jpg"},
+			{:id => 27, :image => "./img/photo-1485988412941-77a35537dae4.jpg"}]
+
+		.container
+			.row
+				- @data.group_by {|x| x[:id]}.each do |id, array|
+					- array.each do |x|
+						.col-3
+							%img{src: x[:image], height: 250}
+
+
+		%script{src: './node_modules/jquery/dist/jquery.min.js', type: 'text/javascript'}
+		%script{src: './node_modules/bootstrap/dist/js/bootstrap.min.js', type: 'text/javascript'}

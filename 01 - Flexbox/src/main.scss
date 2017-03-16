@@ -1,0 +1,130 @@
+// Variables
+$turquoise: #35C2CE;
+$dark-blue: #15152B;
+$red: #FF6060;
+$white: #FFFFFF;
+$card--radius: 0px;
+$card--shadow: 0 2px 10px 0 rgba(21, 21, 43, .08);
+
+// Mixins
+@mixin transition($time: .4s) {
+	transition: all $time cubic-bezier(.39, .575, .565, 1) 0s;
+}
+
+// Misc
+body {
+	background: #F7F7F7;
+}
+h1 {
+	margin: 24px auto;
+	color: $dark-blue;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.text-center {
+	text-align: center;
+}
+.fa.fa-heart {
+	color: $red;
+}
+
+// Card grid
+.flex {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.card--outer {
+	position: relative;
+	background-color: $dark-blue;
+	color: $white;
+	width: 33.3335%;
+	flex-grow: 1;
+	min-width: 350px;
+	height: 250px;
+	margin: 0 auto;
+	padding: 0;
+	border-radius: $card--radius;
+	box-shadow: $card--shadow;
+	overflow: hidden;
+	&:hover {
+		color: $white;
+	}
+	&:hover > .card-top__image {
+		transform: scale(1.1);
+		@include transition(4s);
+	}
+	&:hover > .card-bottom__details hr {
+		width: 100%;
+		@include transition(.4s);
+	}
+}
+.card-top__image {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+	border-radius: $card--radius;
+	@include transition(4s);
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: inherit;
+		top: 0;
+		left: 0;
+		background: rgba($dark-blue, .6);
+		border-radius: $card--radius;
+	}
+}
+.card-bottom__details {
+	position: absolute;
+	padding: 1em;
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	width: calc(100% - 2em);
+	.title {
+		font-weight: 300;
+		line-height: 1.2em;
+		font-size: 1.4em;
+	}
+	.author {
+		color: rgba(#FFF, .7);
+		font-weight: 300;
+		font-size: .75em;
+	}
+	hr {
+		width: 60px;
+		border: none;
+		border-top: 2px solid $turquoise;
+		margin: 1em auto 1em 0;
+		@include transition(.4s);
+	}
+}
+
+// Footer
+footer {
+	margin: 2em 0;
+	font-size: .75em;
+	.fa {
+		@include transition(.4s);
+		&:hover {
+			font-size: 1.2em;
+			@include transition(.4s);
+		}
+	}
+	a {
+		color: #FF6060;
+		text-decoration: none;
+		@include transition(.4s);
+		&:hover {
+			letter-spacing: 2px;
+			@include transition(.4s);
+		}
+	}
+}

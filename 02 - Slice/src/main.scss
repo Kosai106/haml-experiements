@@ -1,0 +1,21 @@
+@mixin truncate($width) {
+	width:         $width;
+	white-space:   nowrap;
+	overflow:      hidden;
+	text-overflow: ellipsis;
+}
+
+body {
+	padding: 100px;
+}
+
+.title {
+	font-weight: 600;
+	font-size: .9em;
+	@include truncate(100%);
+}
+.author {
+	color: rgba(0,0,0,.5);
+	font-weight: 300;
+	font-size: .75em;
+}

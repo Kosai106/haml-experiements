@@ -28,7 +28,7 @@
 /node_modules
 
 # Custom
+!/**/src/*
 **/*.html
 **/*.css
 **/*.js
-!**/src/

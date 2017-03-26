@@ -33,4 +33,4 @@
 **/*.css
 **/*.js
 /05 - Sticky
-/img/src/*
+/img/src/**

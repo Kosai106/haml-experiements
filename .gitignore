@@ -29,8 +29,8 @@
 
 # Custom
 .DS_Store
-**/*.html
-**/*.css
-**/*.js
+/**/*.html
+/**/*.css
+/**/*.js
 /05 - Sticky
 /img/src/**

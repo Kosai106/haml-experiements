@@ -28,7 +28,8 @@
 /node_modules
 
 # Custom
-!/**/src/*
+.DS_Store
 **/*.html
 **/*.css
 **/*.js
+prepros-6.config

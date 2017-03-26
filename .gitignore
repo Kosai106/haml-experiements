@@ -34,3 +34,5 @@
 /**/*.js
 /05 - Sticky
 /img/src/**
+
+!gruntfile.js

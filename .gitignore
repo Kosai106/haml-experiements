@@ -32,4 +32,5 @@
 **/*.html
 **/*.css
 **/*.js
-prepros-6.config
+/05 - Sticky
+/img/src/*

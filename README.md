@@ -1,5 +1,5 @@
 # HAML Experiments
-In this repository you'll find 5 projects to showcase the power of [HAML](http://haml.info/) when it comes to prototyping layouts.
+In this repository you'll find 4 projects to showcase the power of [HAML](http://haml.info/) when it comes to prototyping layouts.
 ___
 
 ## Building

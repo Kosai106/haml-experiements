@@ -24,13 +24,12 @@ module.exports = function(grunt) {
 					'02 - Slice/index.html': '02 - Slice/src/index.haml',
 					'03 - Categories/index.html': '03 - Categories/src/index.haml',
 					'04 - Unsplash/index.html': '04 - Unsplash/src/index.haml',
-					'05 - Sticky/index.html': '05 - Sticky/src/index.haml',
         }
       }
     },
 		sass: {
 			options: {
-				sourcemap: false, 					// no sourcemap as postcss will generate one instead
+				sourcemap: false, 					// No sourcemap as postcss will generate one instead
 			},
 			dev: {
 				options: {
@@ -49,33 +48,38 @@ module.exports = function(grunt) {
 	        '02 - Slice/main.css': '02 - Slice/src/main.scss',
 					'03 - Categories/main.css': '03 - Categories/src/main.scss',
 					'04 - Unsplash/main.css': '04 - Unsplash/src/main.scss',
-					'05 - Sticky/main.css': '05 - Sticky/src/main.scss',
 	      }
 	    }
 	  },
 		postcss: {
-			options: {
-				processors: [
-					require('pixrem')(), 																			// add fallbacks for rem units
-					require('autoprefixer')({browsers: 'last 5 versions'}), 	// add vendor prefixes
-				]
-			},
 			dev: {
 				options: {
-		      map: false, 																							// inline sourcemaps
+		      map: false, 																							// Inline sourcemaps
 		    },
 				src: '01 - Flexbox/main.css',
 			},
 	    dist: {
 				options: {
-		      map: true, 																								// inline sourcemaps
+		      map: true, 																								// Inline sourcemaps
 		      processors: [
-		        require('pixrem')(), 																		// add fallbacks for rem units
-		        require('autoprefixer')({browsers: 'last 5 versions'}), // add vendor prefixes
-		        require('cssnano')(), 																	// minify the result
+		        require('pixrem')(), 																		// Add fallbacks for rem units
+						require('cssnext')(),																		// Enables future syntax
+		        require('autoprefixer')(																// Adds vendor prefixes
+							{browsers: 'last 5 versions'}
+						),
+						require("postcss-color-rgba-fallback")(),								// Adds a hexcode fallback
+		        require('cssnano')( 																		// Minify the result
+							{calc: {precision: 2}},
+							{discardComments: {removeAll: true}}
+						),
 		      ]
 		    },
-	      src: '**/main.css',
+				files: [
+					{src: '01 - Flexbox/main.css', dest: '01 - Flexbox/main.min.css'},
+        	{src: '02 - Slice/main.css', dest: '02 - Slice/main.min.css'},
+					{src: '03 - Categories/main.css', dest: '03 - Categories/main.min.css'},
+        	{src: '04 - Unsplash/main.css', dest: '04 - Unsplash/main.min.css'},
+				]
 	    }
 	  },
 		babel: {
@@ -89,7 +93,6 @@ module.exports = function(grunt) {
         files: {
 					'03 - Categories/main.js': '03 - Categories/src/main.es6',
 					'04 - Unsplash/main.js': '04 - Unsplash/src/main.es6',
-          '05 - Sticky/main.js': '05 - Sticky/src/main.es6',
         }
 	    }
     },
@@ -107,8 +110,8 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					src: ['**.{jpg,gif,png}'],
 					cwd: 'img/src/',
+					src: ['**.{jpg,gif,png}'],
 					custom_dest: 'img/compressed/{%= name %}/',
 					ext: '.min.jpg',
 				}]
@@ -122,8 +125,8 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					expand: true,																		// Enable dynamic expansion
-	        src: ['**/**.{jpg,gif,png}'],										// Actual patterns to match
 					cwd: 'img/compressed/',													// Src matches are relative to this path
+	        src: ['**/**.{jpg,gif,png}'],										// Actual patterns to match
 	        dest: 'img/compressed/',												// Destination path prefix
 	        ext: '.min.jpg',																// Output suffix
 				}]
@@ -135,6 +138,13 @@ module.exports = function(grunt) {
 				'!img/compressed/**',
 				'!img/src/**',
 			],
+			css: [
+				'01 - Flexbox/**.css',
+				'02 - Slice/**.css',
+				'03 - Categories/**.css',
+				'04 - Unsplash/**.css',
+				'!**/*.min.css',
+			],
 			projects: [
 				'index.html',
 				'img/**/*',
@@ -143,8 +153,39 @@ module.exports = function(grunt) {
 				'02 - Slice/**.{html,css,js}',
 				'03 - Categories/**.{html,css,js}',
 				'04 - Unsplash/**.{html,css,js}',
-				'05 - Sticky/**.{html,css,js}',
 			]
+		},
+		notify: {
+			dev: {
+				options: {
+					title: 'Task Complete',
+					message: 'Development files successfully compiled!',
+				}
+			},
+			haml: {
+				options: {
+					title: 'Task Complete',
+					message: 'Successfully compiled HAML!',
+				}
+			},
+			css: {
+				options: {
+					title: 'Task Complete',
+					message: 'Successfully compiled SCSS and ran PostCSS!',
+				}
+			},
+			img: {
+				options: {
+					title: 'Task Complete',
+					message: 'Successfully cropped, resized and minified images!',
+				}
+			},
+			clean: {
+				options: {
+					title: 'Task Complete',
+					message: 'Successfully cleared project directories!',
+				}
+			}
 		}
   });
 
@@ -152,19 +193,37 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-haml2html');
-	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-postcss');
+	grunt.loadNpmTasks('grunt-notify');
 	grunt.loadNpmTasks('grunt-babel');
+	grunt.loadNpmTasks('grunt-sass');
 
 	// Build for production
-  grunt.registerTask('default', ['haml:dist', 'sass:dist', 'postcss:dist', 'babel']);
+  grunt.registerTask('default', [
+		'haml:dist',
+		'notify:haml',
+		'sass:dist',
+		'postcss:dist',
+		'clean:css',
+		'notify:css',
+		'babel'
+	]);
 
 	// build for development
-  grunt.registerTask('dev', ['haml:dev']);
+  grunt.registerTask('dev', [
+		'haml:dev',
+		'notify:dev']);
 
 	// Image optimization
-	grunt.registerTask('img', ['responsive_images:dist', 'imagemin:dist']);
+	grunt.registerTask('img', [
+		'responsive_images:dist',
+		'imagemin:dist',
+		'notify:img'
+	]);
 
 	// Clear projects
-	grunt.registerTask('clear', ['clean:projects']);
+	grunt.registerTask('clear', [
+		'clean:projects',
+		'notify:clean'
+	]);
 };

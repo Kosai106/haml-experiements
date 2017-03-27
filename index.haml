@@ -10,8 +10,11 @@
 		-# Vendor
 		%link{href: './node_modules/bootstrap/dist/css/bootstrap.min.css', rel: 'stylesheet'}
 		-# Local
-		:css
+		:scss
+			// Yeah, you can use SCSS syntax directly in HAML!
+			$color: #2E2E2E;
 			img {
+				background-color: $color;
 				background-size: cover;
 				object-fit: cover;
 				width: 100%;

@@ -44,3 +44,9 @@ ___
 - Tweak gruntfile.js to detect project folders pragmatically.
 - Write up Medium post/tutorial
 - General cleanup of code
+
+## Credits
+
+|    	 Creator 	    | 	 Images	   |
+| :---------------: | :----------: |
+|  Kevin Østerkilde |   Unsplash   |

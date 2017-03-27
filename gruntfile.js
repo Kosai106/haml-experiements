@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 					style: 'expanded', 				// expanded || nested || compact || compressed
         },
         files: {
-					'01 - Flexbox/index.html': '01 - Flexbox/src/index.haml',
+					'index.html': 'index.haml',
         }
       },
 			dist: {
@@ -160,7 +160,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['haml:dist', 'sass:dist', 'postcss:dist', 'babel']);
 
 	// build for development
-  grunt.registerTask('dev', ['haml:dev', 'sass:dev', 'postcss:dev']);
+  grunt.registerTask('dev', ['haml:dev']);
 
 	// Image optimization
 	grunt.registerTask('img', ['responsive_images:dist', 'imagemin:dist']);

@@ -1,43 +1,50 @@
 !!!5
 %html
 	%head
+		-# Meta
 		%meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
 		%meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
 		%meta{charset: "utf-8"}
 
+		-# Stylesheets
+		-# Vendor
 		%link{href: './../node_modules/tether/dist/css/tether.min.css', rel: 'stylesheet'}
 		%link{href: './../node_modules/bootstrap/dist/css/bootstrap.min.css', rel: 'stylesheet'}
 		%link{href: './../node_modules/font-awesome/css/font-awesome.min.css', rel: 'stylesheet'}
+		-# Local
 		%link{href: 'main.css', rel: 'stylesheet'}
+
 		%title Categories
 	%body
-		- @data = [{:id => 1, :author => "Manuel Patrick", :title => "Cooking With The Power Of The Sun", :url => "#1", :category => "coffee", :image => "../img/compressed/medium/photo-1444012236767-1b471c68781c.min.jpg"},
-			{:id => 2, :author => "Aaron Rowe", :title => "Smarter Food Choices 101 Tips For Busy Women", :url => "#2", :category => "coffee", :image => "../img/compressed/medium/photo-1432107294469-414527cb5c65.min.jpg"},
-			{:id => 3, :author => "Susie Wilkins", :title => "Is Organic The Way Forward", :url => "#3", :category => "coffee", :image => "../img/compressed/medium/photo-1445888985293-8e1b904061c4.min.jpg"},
-			{:id => 4, :author => "Floyd Caldwell", :title => "Cooking For One", :url => "#4", :category => "coffee", :image => "../img/compressed/medium/photo-1446321423766-c339f030bd0a.min.jpg"},
-			{:id => 5, :author => "Francis Collins", :title => "Regional Cuisine Down Home Southern Cooling", :url => "#5", :category => "coffee", :image => "../img/compressed/medium/photo-1452882033718-1caccfcfe77f.min.jpg"},
-			{:id => 6, :author => "Virgie Pierce", :title => "Top 3 Reasons Why You Need Cookie Reciepes", :url => "#6", :category => "coffee", :image => "../img/compressed/medium/photo-1461914756888-80f9821f5d17.min.jpg"},
-			{:id => 7, :author => "Bryan Dennis", :title => "Refrigerated Treats Can Make For A Cool Event", :url => "#7", :category => "coffee", :image => "../img/compressed/medium/photo-1470326030020-86a5ef9ca428.min.jpg"},
-			{:id => 8, :author => "Linnie Miles", :title => "Cooking With Fine Italian Wine", :url => "#8", :category => "coffee", :image => "../img/compressed/medium/photo-1477173249897-5afc98d3f565.min.jpg"},
-			{:id => 9, :author => "Roy Garcia", :title => "Thrill Friends And Family With A Make It Yourself Pizza Party", :url => "#9", :category => "coffee", :image => "../img/compressed/medium/photo-1484157239365-80e635261db7.min.jpg"},
-			{:id => 10, :author => "Manuel Patrick", :title => "A Slow-Cooker Corned Beef You Can Set and Forget", :category => "food", :image => "../img/compressed/medium/photo-1428196457394-f0c4aec5f574.min.jpg"},
-			{:id => 11, :author => "Aaron Rowe", :title => "Super-Easy Shrimp Scampi", :category => "food", :image => "../img/compressed/medium/photo-1432139555190-58524dae6a55.min.jpg"},
-			{:id => 12, :author => "Susie Wilkins", :title => "10 Kitchen Tools You Need To Be Considered an Adult", :category => "food", :image => "../img/compressed/medium/photo-1444228425018-ff8535a55c93.min.jpg"},
-			{:id => 13, :author => "Floyd Caldwell", :title => "The Judges' Best Reactions", :category => "food", :image => "../img/compressed/medium/photo-1444731961956-751ed90465a5.min.jpg"},
-			{:id => 14, :author => "Francis Collins", :title => "7 Things to Make with Leftover Pasta", :category => "food", :image => "../img/compressed/medium/photo-1453831362806-3d5577f014a4.min.jpg"},
-			{:id => 15, :author => "Virgie Pierce", :title => "16 Things You Didn't Know Abour Lorraine", :category => "food", :image => "../img/compressed/medium/photo-1469053713174-e64e64779a7a.min.jpg"},
-			{:id => 16, :author => "Bryan Dennis", :title => "Venus Is In Retrograde (and This Is How YOu Should Be Eating)", :category => "food", :image => "../img/compressed/medium/photo-1474600056930-615c3d706456.min.jpg"},
-			{:id => 17, :author => "Linnie Miles", :title => "Trisha's Vanilla-Orange Tart", :category => "food", :image => "../img/compressed/medium/photo-1477259004500-ce2463b979ca.min.jpg"},
-			{:id => 18, :author => "Roy Garcia", :title => "10 of the Weirdest Food Trends Ever", :category => "food", :image => "../img/compressed/medium/photo-1487532195053-ae7d32261c6a.min.jpg"},
-			{:id => 19, :author => "William Belk", :title => "The CIA Just Lost Control of Its Hacking Arsenal", :category => "technology", :image => "../img/compressed/medium/photo-1431068799455-80bae0caf685.min.jpg"},
-			{:id => 20, :author => "Carmel DeAmicis", :title => "Rasperberry Pi Just Turned 5. Here's A Brief History Summary", :category => "technology", :image => "../img/compressed/medium/photo-1478358161113-b0e11994a36b.min.jpg"},
-			{:id => 21, :author => "Aakaash Jois", :title => "6 Technology Trends That Aren't AI, Blockchain or VR", :category => "technology", :image => "../img/compressed/medium/photo-1482855549413-2a6c9b1955a7.min.jpg"},
-			{:id => 22, :author => "Chad Grills", :title => "The Science Backed Ways Music Affects Your Brain and Productivity", :category => "technology", :image => "../img/compressed/medium/photo-1483000805330-4eaf0a0d82da.min.jpg"},
-			{:id => 23, :author => "Quincy Larson", :title => "58% of high-performance employees say they need more quiet work spaces.", :category => "technology", :image => "../img/compressed/medium/photo-1485813727108-9b009dfab116.min.jpg"},
-			{:id => 24, :author => "Fabricio Teixeira", :title => "How to encrypt your entire life in less than an hour", :category => "technology", :image => "../img/compressed/medium/photo-1485988412941-77a35537dae4.min.jpg"},
-			{:id => 25, :author => "Terren Peterson", :title => "A list of 30 women rocking in UX to celebrate the International Women’s Day", :category => "technology", :image => "../img/compressed/medium/photo-1486475554424-2fa50cd59f18.min.jpg"},
-			{:id => 26, :author => "Colin Budd", :title => "Silicon Valley Is Right — Our Jobs Are Already Disappearing", :category => "technology", :image => "../img/compressed/medium/photo-1486837007094-f97925b97013.min.jpg"},
-			{:id => 27, :author => "Seyi Fabode", :title => "Applying Machine Learning to the Internet of Things", :category => "technology", :image => "../img/compressed/medium/photo-1487505983481-9aa2d9f9901a.min.jpg"}]
+		-# Our data object. It almost looks like JSON which makes it very easy to work with.
+		-# This one is huge!
+		- @data = [{:id => 1, :author => "Manuel Patrick", :title => "Cooking With The Power Of The Sun", :category => "coffee", :image => "./img/compressed/medium/photo-1444012236767-1b471c68781c.min.jpg"},
+			{:id => 2, :author => "Aaron Rowe", :title => "Smarter Food Choices 101 Tips For Busy Women", :category => "coffee", :image => "./img/compressed/medium/photo-1432107294469-414527cb5c65.min.jpg"},
+			{:id => 3, :author => "Susie Wilkins", :title => "Is Organic The Way Forward", :category => "coffee", :image => "./img/compressed/medium/photo-1445888985293-8e1b904061c4.min.jpg"},
+			{:id => 4, :author => "Floyd Caldwell", :title => "Cooking For One", :category => "coffee", :image => "./img/compressed/medium/photo-1446321423766-c339f030bd0a.min.jpg"},
+			{:id => 5, :author => "Francis Collins", :title => "Regional Cuisine Down Home Southern Cooling", :category => "coffee", :image => "./img/compressed/medium/photo-1452882033718-1caccfcfe77f.min.jpg"},
+			{:id => 6, :author => "Virgie Pierce", :title => "Top 3 Reasons Why You Need Cookie Reciepes", :category => "coffee", :image => "./img/compressed/medium/photo-1461914756888-80f9821f5d17.min.jpg"},
+			{:id => 7, :author => "Bryan Dennis", :title => "Refrigerated Treats Can Make For A Cool Event", :category => "coffee", :image => "./img/compressed/medium/photo-1470326030020-86a5ef9ca428.min.jpg"},
+			{:id => 8, :author => "Linnie Miles", :title => "Cooking With Fine Italian Wine", :category => "coffee", :image => "./img/compressed/medium/photo-1477173249897-5afc98d3f565.min.jpg"},
+			{:id => 9, :author => "Roy Garcia", :title => "Thrill Friends And Family With A Make It Yourself Pizza Party", :category => "coffee", :image => "./img/compressed/medium/photo-1484157239365-80e635261db7.min.jpg"},
+			{:id => 10, :author => "Manuel Patrick", :title => "A Slow-Cooker Corned Beef You Can Set and Forget", :category => "food", :image => "./img/compressed/medium/photo-1428196457394-f0c4aec5f574.min.jpg"},
+			{:id => 11, :author => "Aaron Rowe", :title => "Super-Easy Shrimp Scampi", :category => "food", :image => "./img/compressed/medium/photo-1432139555190-58524dae6a55.min.jpg"},
+			{:id => 12, :author => "Susie Wilkins", :title => "10 Kitchen Tools You Need To Be Considered an Adult", :category => "food", :image => "./img/compressed/medium/photo-1444228425018-ff8535a55c93.min.jpg"},
+			{:id => 13, :author => "Floyd Caldwell", :title => "The Judges' Best Reactions", :category => "food", :image => "./img/compressed/medium/photo-1444731961956-751ed90465a5.min.jpg"},
+			{:id => 14, :author => "Francis Collins", :title => "7 Things to Make with Leftover Pasta", :category => "food", :image => "./img/compressed/medium/photo-1453831362806-3d5577f014a4.min.jpg"},
+			{:id => 15, :author => "Virgie Pierce", :title => "16 Things You Didn't Know Abour Lorraine", :category => "food", :image => "./img/compressed/medium/photo-1469053713174-e64e64779a7a.min.jpg"},
+			{:id => 16, :author => "Bryan Dennis", :title => "Venus Is In Retrograde (and This Is How YOu Should Be Eating)", :category => "food", :image => "./img/compressed/medium/photo-1474600056930-615c3d706456.min.jpg"},
+			{:id => 17, :author => "Linnie Miles", :title => "Trisha's Vanilla-Orange Tart", :category => "food", :image => "./img/compressed/medium/photo-1477259004500-ce2463b979ca.min.jpg"},
+			{:id => 18, :author => "Roy Garcia", :title => "10 of the Weirdest Food Trends Ever", :category => "food", :image => "./img/compressed/medium/photo-1487532195053-ae7d32261c6a.min.jpg"},
+			{:id => 19, :author => "William Belk", :title => "The CIA Just Lost Control of Its Hacking Arsenal", :category => "technology", :image => "./img/compressed/medium/photo-1431068799455-80bae0caf685.min.jpg"},
+			{:id => 20, :author => "Carmel DeAmicis", :title => "Rasperberry Pi Just Turned 5. Here's A Brief History Summary", :category => "technology", :image => "./img/compressed/medium/photo-1478358161113-b0e11994a36b.min.jpg"},
+			{:id => 21, :author => "Aakaash Jois", :title => "6 Technology Trends That Aren't AI, Blockchain or VR", :category => "technology", :image => "./img/compressed/medium/photo-1482855549413-2a6c9b1955a7.min.jpg"},
+			{:id => 22, :author => "Chad Grills", :title => "The Science Backed Ways Music Affects Your Brain and Productivity", :category => "technology", :image => "./img/compressed/medium/photo-1483000805330-4eaf0a0d82da.min.jpg"},
+			{:id => 23, :author => "Quincy Larson", :title => "58% of high-performance employees say they need more quiet work spaces.", :category => "technology", :image => "./img/compressed/medium/photo-1485813727108-9b009dfab116.min.jpg"},
+			{:id => 24, :author => "Fabricio Teixeira", :title => "How to encrypt your entire life in less than an hour", :category => "technology", :image => "./img/compressed/medium/photo-1485988412941-77a35537dae4.min.jpg"},
+			{:id => 25, :author => "Terren Peterson", :title => "A list of 30 women rocking in UX to celebrate the International Women’s Day", :category => "technology", :image => "./img/compressed/medium/photo-1486475554424-2fa50cd59f18.min.jpg"},
+			{:id => 26, :author => "Colin Budd", :title => "Silicon Valley Is Right — Our Jobs Are Already Disappearing", :category => "technology", :image => "./img/compressed/medium/photo-1486837007094-f97925b97013.min.jpg"},
+			{:id => 27, :author => "Seyi Fabode", :title => "Applying Machine Learning to the Internet of Things", :category => "technology", :image => "./img/compressed/medium/photo-1487505983481-9aa2d9f9901a.min.jpg"}]
 
 		.container
 			.content
@@ -52,8 +59,10 @@
 											.title= x[:title]
 											.author= x[:author]
 
+		-# Javascript
+		-# Vendor
 		%script{src: './../node_modules/jquery/dist/jquery.min.js', type: 'text/javascript'}
 		%script{src: './../node_modules/tether/dist/js/tether.min.js', type: 'text/javascript'}
 		%script{src: './../node_modules/bootstrap/dist/js/bootstrap.min.js', type: 'text/javascript'}
-
+		-# Local
 		%script{src: 'main.js', type: 'text/javascript'}

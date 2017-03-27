@@ -1,3 +1,6 @@
+// Variables
+$green-ish: #21E09E;
+
 // Mixins
 @mixin transition($time: .4s) {
 	transition: all $time cubic-bezier(.39, .575, .565, 1) 0s;
@@ -28,6 +31,20 @@ body {
 		width: calc(100vw + 15px);
 		overflow: scroll;
 		box-sizing: border-box;
+		span[data-card-id="food"] {
+			.card-arr:after {
+				$color: adjust-hue($green-ish, 50%);
+				$color-light: lighten($color, 20%);
+				background: rgba($color-light, .75);
+			}
+		}
+		span[data-card-id="technology"] {
+			.card-arr:after {
+				$color: adjust-hue($green-ish, 175%);
+				$color-light: lighten($color, 30%);
+				background: rgba($color-light, .75);
+			}
+		}
 		.card-arr {
 			position: relative;
 			display: flex;
@@ -50,7 +67,7 @@ body {
 				height: 100%;
 				width: 100%;
 				filter: none;
-				background: rgba(#21E09E, .75);
+				background: rgba($green-ish, .75);
 			}
 			&:hover {
 				@include transition(.4s);

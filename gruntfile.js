@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 					style: 'expanded', 				// expanded || nested || compact || compressed
         },
         files: {
-					'index.html': 'index.haml',
+					'01 - Flexbox/index.html': '01 - Flexbox/src/index.haml',
         }
       },
 			dist: {

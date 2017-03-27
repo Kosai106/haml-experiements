@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 					style: 'compressed',
         },
         files: {
+					'00 - Basics/index.html': '00 - Basics/src/index.haml',
           '01 - Flexbox/index.html': '01 - Flexbox/src/index.haml',
 					'02 - Slice/index.html': '02 - Slice/src/index.haml',
 					'03 - Categories/index.html': '03 - Categories/src/index.haml',
